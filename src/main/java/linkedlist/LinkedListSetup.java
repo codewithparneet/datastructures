@@ -42,7 +42,7 @@ public class LinkedListSetup<E> {
         }
 
         for (int i = 0; i <= index; i++) {
-            return null;
+
         }
         return null;
     }
