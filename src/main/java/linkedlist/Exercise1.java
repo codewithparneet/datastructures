@@ -1,7 +1,5 @@
 package linkedlist;
 
-import java.util.LinkedList;
-
 /**
  * Remove duplicates from an unsorted linked list
  */

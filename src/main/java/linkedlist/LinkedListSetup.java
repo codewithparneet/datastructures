@@ -1,7 +1,5 @@
 package linkedlist;
 
-import java.util.LinkedList;
-
 /**
  * Empty list
  * Single element
