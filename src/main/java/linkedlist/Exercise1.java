@@ -6,11 +6,18 @@ package linkedlist;
 public class Exercise1 {
     public static void main(String[] args) {
         LinkedListSetup<Integer> list = new LinkedListSetup<>();
-        list.addFirst(2);
-        list.addFirst(3);
-        list.addFirst(4);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        System.out.println("current size is: " + list.currentSize);
         for (int i = 0; i < list.currentSize; i++) {
-            System.out.println();
+            System.out.println(list.getElement(i));
+        }
+        System.out.println("***************");
+        list.removeLast();
+        System.out.println("current size is: " + list.currentSize);
+        for (int i = 0; i < list.currentSize; i++) {
+            System.out.println(list.getElement(i));
         }
     }
 }

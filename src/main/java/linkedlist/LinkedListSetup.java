@@ -23,6 +23,8 @@ public class LinkedListSetup<E> {
         if (head == null && tail == null) {
             node.data = input;
             head = tail = node;
+            currentSize++;
+            return;
         }
         node.data = input;
         node.next = head;
@@ -30,19 +32,92 @@ public class LinkedListSetup<E> {
         currentSize++;
     }
 
-    public E getElement(int index) {
+    public void addLast(E input) {
+        // empty list
         if (head == null && tail == null) {
-            return null;
+            addFirst(input);
+            return;
         }
 
+        Node<E> node = new Node<>();
+        node.data = input;
         if (head == tail) {
+            head.next = node;
+            tail = node;
+            currentSize++;
+            return;
+        }
+
+        tail.next = node;
+        tail = node;
+        currentSize++;
+    }
+
+    public E getElement(int index) {
+        if (head == null) {
+            return null;
+        }
+        if (index == 0) {
             return head.data;
         }
 
-        for (int i = 0; i <= index; i++) {
+        if (index == currentSize - 1) {
+            return tail.data;
+        }
 
+        if (index >= currentSize) {
+            return null;
+        }
+
+        int i = 0;
+        Node<E> curr = head;
+        while (i <= index) {
+            curr = curr.next;
+            i++;
+            if (i == index) {
+                return curr.data;
+            }
         }
         return null;
+    }
+
+
+    public void removeFirst() {
+        if (head == null && tail == null) {
+            return;
+        }
+        if (head == tail) {
+            head = tail = null;
+            currentSize--;
+            return;
+        }
+
+        head = head.next;
+        currentSize--;
+    }
+
+    public void removeLast() {
+        if (head == null && tail == null) {
+            return;
+        }
+
+        if (head == tail) {
+            removeFirst();
+        }
+        Node<E> current = head;
+        int secondLastElementIndex = currentSize - 2;
+        int i = 0;
+
+        while (i < currentSize) {
+            current = current.next;
+            i++;
+            if (i == secondLastElementIndex) {
+                tail = current;
+                currentSize--;
+                return;
+            }
+        }
+
     }
 
     private static class Node<E> {
