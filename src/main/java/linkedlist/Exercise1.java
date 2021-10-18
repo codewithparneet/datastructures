@@ -1,11 +1,14 @@
 package linkedlist;
 
+import java.sql.SQLOutput;
+
 /**
  * Remove duplicates from an unsorted linked list
  */
 public class Exercise1 {
     public static void main(String[] args) {
         LinkedListSetup<Integer> list = new LinkedListSetup<>();
+        System.out.println("Size: "+ list.currentSize);
         list.addLast(2);
         list.addLast(3);
         list.addLast(4);

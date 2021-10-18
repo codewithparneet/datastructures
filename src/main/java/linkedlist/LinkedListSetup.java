@@ -1,11 +1,12 @@
 package linkedlist;
 
 /**
- * Empty list
- * Single element
- * Beginning
- * Ending
- * Middle
+ * Five Conditions to look for when writing data structures libraries:
+ * 1) Empty data structure
+ * 2) Single element in the data structure
+ * 3) Adding/Removing beginning of the data structure
+ * 4) Adding/Removing end of the data structure
+ * 5) Working in the middle
  *
  * @param <E>
  */
@@ -17,16 +18,18 @@ public class LinkedListSetup<E> {
         head = tail = null;
     }
 
+    /**
+     * Time complexity = O(1).
+     * @param input new node
+     */
     public void addFirst(E input) {
-        Node<E> node = new Node<>();
+        Node<E> node = new Node<>(input);
         // empty list
         if (head == null && tail == null) {
-            node.data = input;
             head = tail = node;
             currentSize++;
             return;
         }
-        node.data = input;
         node.next = head;
         head = node;
         currentSize++;
@@ -39,8 +42,7 @@ public class LinkedListSetup<E> {
             return;
         }
 
-        Node<E> node = new Node<>();
-        node.data = input;
+        Node<E> node = new Node<>(input);
         if (head == tail) {
             head.next = node;
             tail = node;
@@ -81,11 +83,11 @@ public class LinkedListSetup<E> {
         return null;
     }
 
-
     public void removeFirst() {
         if (head == null && tail == null) {
             return;
         }
+
         if (head == tail) {
             head = tail = null;
             currentSize--;
@@ -104,6 +106,7 @@ public class LinkedListSetup<E> {
         if (head == tail) {
             removeFirst();
         }
+
         Node<E> current = head;
         int secondLastElementIndex = currentSize - 2;
         int i = 0;
@@ -117,11 +120,15 @@ public class LinkedListSetup<E> {
                 return;
             }
         }
-
     }
 
-    private static class Node<E> {
+    private class Node<E> {
         E data;
         Node<E> next;
+
+        public Node(E obj) {
+            data = obj;
+            next = null;
+        }
     }
 }
